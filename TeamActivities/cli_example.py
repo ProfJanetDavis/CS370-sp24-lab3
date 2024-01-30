@@ -10,14 +10,16 @@ sys.argv[0] is the name used to invoke the program (myprogram.py).
 Optionally, additional arguments may come after the name of the program, those are sys.argv[1], etc.
 '''
 
+import simpleaudio as sa
 import sys
+
 argvlen = len(sys.argv)
 
 '''
 This is a debugging statement that prints out the list of command line arguments that were included when you 
 invoked this program from the command line.
 '''
-print("sys.argv: ", sys.argv)
+#print("sys.argv: ", sys.argv)
 
 '''
 # HELP: This is a command line argument that is invoked by typing --help or -h
@@ -78,11 +80,14 @@ For now, just have it print out the statement:
 
 if sys.argv[1] == '-p' or sys.argv[1] == '--play' :
     try:
-        filepath = sys.argv[2]
-        print("playing:", filepath)
+        for filename in sys.argv[2:]:
+            wave_obj = sa.WaveObject.from_wave_file(filename)
+            play_obj = wave_obj.play()
+            print("playing:", filename)
+            play_obj.wait_done()
         sys.exit(0)
-    except IndexError:
-        print("usage:",sys.argv[0], '--play', '<filepath>')
+    except Exception:
+        print("usage:",sys.argv[0], '--play', '<wav files>')
         sys.exit(1) 
 
 '''
