@@ -8,21 +8,9 @@ Organization:
 * TeamActivities: Has the code files for the command line activity (cli_example.py), the simpleaudio activity (simpleaudio_test.py), and two sample .wav audio files in the sounds subfolder.
 
 ## Team Members
-Enter your names here
-
-## Team Roles
-Who will start out as
-* DRIVER: Driver's name
-* NAVIGATOR: Navigator's name
-
-You will switch halfway through the _SDX Ch. 3_ activity.
+Janet Davis
 
 ## SDX Ch. 3 documentation
-
-Write your answers to the questions below.
-
-* What were the main ideas from each chapter?
-* What questions did you have about the material in the chapters? What did you find confusing?
 
 After you've modified/remixed the code, write a summary of what you did and why below:
 
