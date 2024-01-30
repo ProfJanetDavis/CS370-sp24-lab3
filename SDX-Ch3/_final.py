@@ -2,6 +2,15 @@ import sys
 from hashlib import sha256
 
 def find_groups(filenames):
+    """Finds groups of identical files.
+
+    Args:
+        filenames [string]: Names of files to compare.
+
+    Returns:
+        {string:[string]}: Dictionary mapping sha256 hashcodes
+            to lists of files with that hashcode. 
+    """
     groups = {}
     for fn in filenames:
         data = open(fn, "rb").read()
