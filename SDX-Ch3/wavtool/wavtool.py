@@ -8,7 +8,7 @@ def hash(filename):
         data = f.read()
     return sha256(data).hexdigest()    
 
-def index(directory):
+def _index(directory):
     """Generates an index of hashcodes for WAV files in a directory.
 
     Args:
@@ -24,8 +24,18 @@ def index(directory):
         hashcodes.add(hash(fn))
     return hashcodes
 
-def index_filename(directory):
+def _index_filename(directory):
     return os.path.join(directory,'index.txt')
+
+def write_index(directory):
+    hashcodes = _index(directory)
+    with open(_index_filename(directory), 'w') as f:
+        f.write('\n'.join(hashcodes)) 
+
+def read_index(directory):
+    with open(_index_filename(directory),'r') as f:
+        data = f.read()
+    return data.split()
 
 if __name__ == "__main__":
     print(index(sys.argv[1]))
