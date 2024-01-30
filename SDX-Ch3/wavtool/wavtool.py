@@ -1,7 +1,7 @@
 import glob, os
 from hashlib import sha256
 
-def hash(filename):
+def _hashfile(filename):
     """Returns a SHA256 hash of the named file.
     """
     with open(filename, "rb") as f:
@@ -21,7 +21,7 @@ def _index(directory):
     
     hashcodes = set()
     for fn in filenames:
-        hashcodes.add(hash(fn))
+        hashcodes.add(_hashfile(fn))
     return hashcodes
 
 def _index_filename(directory):
@@ -37,5 +37,5 @@ def read_index(directory):
         data = f.read()
     return data.split()
 
-if __name__ == "__main__":
-    print(index(sys.argv[1]))
+def search_index(filename, directory):
+    return _hashfile(filename) in read_index(directory)
