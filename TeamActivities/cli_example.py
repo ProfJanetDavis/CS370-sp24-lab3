@@ -76,12 +76,19 @@ For now, just have it print out the statement:
 (You'll add in the ability to actually play in the next step.)
 '''
 
-# ADD YOUR CODE FOR PLAY HERE
-
+if sys.argv[1] == '-p' or sys.argv[1] == '--play' :
+    try:
+        filepath = sys.argv[2]
+        print("playing:", filepath)
+        sys.exit(0)
+    except IndexError:
+        print("usage:",sys.argv[0], '--play', '<filepath>')
+        sys.exit(1) 
 
 '''
 This goes at the end of all of your if statements and it lets you know if you have 
 unknown or unaddressed command line arguments.
 '''
 print(sys.argv[0], "error, unexpected arguments ", sys.argv[1:],file=sys.stderr)
+sys.exit(1)
 
